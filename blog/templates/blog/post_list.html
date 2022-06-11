@@ -7,18 +7,22 @@
 		<header>
 			<h1><a href="/">Innocent's Blog</a></h1>
 		</header>
-
+		
+		{% for post in posts %}
 		<article>
 			<time> Published: 09.06.2022, 19:53</time>
-			<h2><a href="">My First Post</a></h2>
-			<p>You're probably wondering why I've gathered you all here</p>
+			<h2><a href="">{{ post.title }}</a></h2>
+			<p>{{ post.text|linebreaksbr }}</p>
 
 		</article>
-
+		{% endfor %}
+		
+		{% for post in posts %}
 		<article>
 			<time>Published: 09.06.2022, 20:08</time>
-			<h2><a href="">My Second Post</a></h2>
-			<p>The world as we know is not safe for your child anymore</p>
+			<h2><a href="">{{ post.title }}</a></h2>
+			<p>{{ post.text|linebreaksbr }}</p>
 		</article>
+		{% endfor %}
 	</body>
 </html>
