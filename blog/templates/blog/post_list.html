@@ -1,28 +1,13 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Innocent Writings</title>
-	</head>
-	<body>
-		<header>
-			<h1><a href="/">Innocent's Blog</a></h1>
-		</header>
-		
-		{% for post in posts %}
-		<article>
-			<time> Published: 09.06.2022, 19:53</time>
-			<h2><a href="">{{ post.title }}</a></h2>
-			<p>{{ post.text|linebreaksbr }}</p>
+{% extends 'blog/base.html' %}
 
-		</article>
-		
-		
-		
-		<article>
-			<time>Published: 09.06.2022, 20:08</time>
-			<h2><a href="">{{ post.title }}</a></h2>
-			<p>{{ post.text|linebreaksbr }}</p>
-		</article>
-		{% endfor %}
-	</body>
-</html>
+{% block content %}
+	{% for post in posts %}
+	<article class="post">
+		<time class="date"> 
+			{{ post.published_date }}
+		</time>
+		<h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+		<p>{{ post.text|linebreaksbr }}</p>
+	</article>
+	{% endfor %}
+{% endblock %}
